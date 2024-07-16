@@ -52,6 +52,8 @@ namespace کارگزاری_املاک.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.PhoneNumber, CancellationToken.None);
                 user.PhoneNumber = Input.PhoneNumber;
                 user.FullName = Input.FullName;
+                user.EmailConfirmed = true;
+                user.PhoneNumberConfirmed = true;
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -61,7 +63,7 @@ namespace کارگزاری_املاک.Areas.Identity.Pages.Account
 
 
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _signInManager.SignInAsync(user, isPersistent: true);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
