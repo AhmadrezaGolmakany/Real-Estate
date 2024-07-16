@@ -5,30 +5,38 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 using کارگزاری_املاک.Models.ViewModels;
+using کارگزاری_املاک.Utilitys;
 
 namespace کارگزاری_املاک.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<UserModel> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _context;
         private readonly UserManager<UserModel> _userManager;
         private readonly IUserStore<UserModel> _userStore;
+
+
 
         public RegisterModel(
             UserManager<UserModel> userManager,
             IUserStore<UserModel> userStore,
-            SignInManager<UserModel> signInManager
-            )
+            SignInManager<UserModel> signInManager,
+            RoleManager<IdentityRole> roleManager,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
-            
+            _roleManager = roleManager;
+            _context = context;
         }
 
-        [BindProperty] 
+        [BindProperty]
         public RegisterViewModel Input { get; set; }
 
 
@@ -58,7 +66,18 @@ namespace کارگزاری_املاک.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    if (!await _roleManager.RoleExistsAsync(Roles.Admin))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Admin));
 
+
+                    if (!await _roleManager.RoleExistsAsync(Roles.User))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.User));
+
+
+                    if (_context.users.ToList().Count == 1)
+                        await _userManager.AddToRoleAsync(user, Roles.Admin);
+                    else
+                        await _userManager.AddToRoleAsync(user, Roles.User);
 
 
 
@@ -90,6 +109,6 @@ namespace کارگزاری_املاک.Areas.Identity.Pages.Account
             }
         }
 
-    
+
     }
 }
