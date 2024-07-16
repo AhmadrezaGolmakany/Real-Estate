@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using کارگزاری_املاک.Models;
 
 namespace کارگزاری_املاک.Data
 {
@@ -9,5 +10,7 @@ namespace کارگزاری_املاک.Data
             : base(options)
         {
         }
+
+        public DbSet<UserModel> users { get; set; }
     }
 }
