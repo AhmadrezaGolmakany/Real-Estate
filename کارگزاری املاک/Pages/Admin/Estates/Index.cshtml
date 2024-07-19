@@ -1,0 +1,71 @@
+﻿@page
+@model کارگزاری_املاک.Pages.Admin.Estates.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row mt-5">
+    <div class="col-lg-3 col-md-3 col-12">
+        <div class="text-right">
+            <div class="list-group p-0 mb-5">
+                <a href="#" class="active list-group-item list-group-item-action">
+                    مدیریت املاک
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-12">
+        <div class="card">
+            <div class="card-header d-flex flex-wrap">
+                <a href="/admin/estates/create" class="btn btn-primary text-white mr-0">
+                    <svg class="svg-inline--fa fa-plus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg><!-- <i class="fas fa-plus"></i> -->
+                    ایجاد ملک جدید
+                </a>
+                <h4 class="text-center font-weight-bold m-auto"> مدیریت املاک </h4>
+            </div>
+            <div class="card-body">
+                @if (Model.EstateModel.Any())
+                {
+                    <table class="table table-bordered table-striped table-hover mt-2">
+                        <thead>
+                            <tr>
+                                <th class="text-center"> عکس </th>
+                                <th class="text-center"> نام </th>
+                                <th class="text-center"> متراژ </th>
+@*                                 <th class="text-center"> دسته بندی</th>
+ *@                                <th class="text-center">مدیریت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var estate in Model.EstateModel)
+                        {
+                                <tr>
+                                    <td class="text-center align-middle"><img src="~/image/estates/@estate.Image" class="img-fluid" width="60" height="60" alt=""></td>
+                                    <td class="text-center align-middle">@estate.Title</td>
+                                    <td class="text-center align-middle">@estate.Metrage</td>
+@*                                     <td class="text-center align-middle">آپارتمان</td>
+ *@                                    <td class="text-center">
+                                        <div class="btn-group" dir="ltr" role="group" aria-label="Basic example">
+                                            <a href="/admin/Estates/Details" class="btn btn-sm btn-info">  <i class="fas fa-list"></i> </a>
+                                            <a href="/admin/Estates/Edit" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i> </a>
+                                            <a href="/admin/Estates/Delete" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                        }
+                      
+
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <h3 class="text-center alert alert-info" >ملکی موجود نمیباشد</h3>
+                }
+               
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@page
+@model کارگزاری_املاک.Pages.Admin.Estates.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>EstateModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EstateModel.Id" />
+            <div class="form-group">
+                <label asp-for="EstateModel.Title" class="control-label"></label>
+                <input asp-for="EstateModel.Title" class="form-control" />
+                <span asp-validation-for="EstateModel.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstateModel.Description" class="control-label"></label>
+                <input asp-for="EstateModel.Description" class="form-control" />
+                <span asp-validation-for="EstateModel.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstateModel.Metrage" class="control-label"></label>
+                <input asp-for="EstateModel.Metrage" class="form-control" />
+                <span asp-validation-for="EstateModel.Metrage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstateModel.Image" class="control-label"></label>
+                <input asp-for="EstateModel.Image" class="form-control" />
+                <span asp-validation-for="EstateModel.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstateModel.Price" class="control-label"></label>
+                <input asp-for="EstateModel.Price" class="form-control" />
+                <span asp-validation-for="EstateModel.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstateModel.Address" class="control-label"></label>
+                <input asp-for="EstateModel.Address" class="form-control" />
+                <span asp-validation-for="EstateModel.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,77 @@
+
+.login-mother {
+    height: 100%;
+    width: 40%;
+    position: relative;
+    margin: auto;
+    padding-top: 150px;
+    display: block;
+}
+
+.register {
+    padding-top: 50px;
+}
+
+.login-mother .login-register {
+    width: 100%;
+    background: rgba(245, 245, 245, 0.5);
+    padding: 40px 60px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.2);
+}
+
+.login-register h3 {
+    color: #333;
+    text-align: center;
+}
+
+.login-mother .login-register form label {
+    color: #333;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.login-mother .login-register form input {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #eaeaea;
+    transition: all ease-in-out .2s;
+}
+
+
+.login-mother .login-register form input:focus {
+    outline: 1px solid #414141;
+    box-shadow: 1px 1px 10px #414141;
+}
+#checkbox {
+    width: 30px;
+    height: 30px;
+}
+.login-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-btn button {
+    width: 200px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: forestgreen;
+    border: 1px solid green;
+    outline: none;
+    padding: 8px 5px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.login-btn button:focus {
+    outline: none;
+    border: none;
+}
