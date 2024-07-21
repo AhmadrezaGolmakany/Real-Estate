@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using کارگزاری_املاک.Data;
 
@@ -11,9 +12,11 @@ using کارگزاری_املاک.Data;
 namespace کارگزاری_املاک.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240720212120_258")]
+    partial class _258
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,6 +277,7 @@ namespace کارگزاری_املاک.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Metrage")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
@@ -284,7 +288,7 @@ namespace کارگزاری_املاک.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("categoryId")
+                    b.Property<int?>("categoryId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -361,9 +365,7 @@ namespace کارگزاری_املاک.Data.Migrations
                 {
                     b.HasOne("کارگزاری_املاک.Models.CategoryModel", "CategoryModel")
                         .WithMany("EstatesList")
-                        .HasForeignKey("categoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("categoryId");
 
                     b.Navigation("CategoryModel");
                 });

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using کارگزاری_املاک.Data;
 
@@ -11,9 +12,11 @@ using کارگزاری_املاک.Data;
 namespace کارگزاری_املاک.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240719221647_789")]
+    partial class _789
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,6 +277,7 @@ namespace کارگزاری_املاک.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Metrage")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<double>("Price")

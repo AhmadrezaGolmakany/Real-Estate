@@ -33,8 +33,8 @@
                                 <th class="text-center"> عکس </th>
                                 <th class="text-center"> نام </th>
                                 <th class="text-center"> متراژ </th>
-@*                                 <th class="text-center"> دسته بندی</th>
- *@                                <th class="text-center">مدیریت</th>
+                                 <th class="text-center"> دسته بندی</th>
+                                <th class="text-center">مدیریت</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,12 +44,12 @@
                                     <td class="text-center align-middle"><img src="~/image/estates/@estate.Image" class="img-fluid" width="60" height="60" alt=""></td>
                                     <td class="text-center align-middle">@estate.Title</td>
                                     <td class="text-center align-middle">@estate.Metrage</td>
-@*                                     <td class="text-center align-middle">آپارتمان</td>
- *@                                    <td class="text-center">
+                                   <td class="text-center align-middle">@estate.CategoryModel.Title</td>
+                                 <td class="text-center">
                                         <div class="btn-group" dir="ltr" role="group" aria-label="Basic example">
-                                            <a href="/admin/Estates/Details" class="btn btn-sm btn-info">  <i class="fas fa-list"></i> </a>
-                                            <a href="/admin/Estates/Edit" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i> </a>
-                                            <a href="/admin/Estates/Delete" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> </a>
+                                            <a href="/admin/estates/Details" class="btn btn-sm btn-info">  <i class="fas fa-list"></i> </a>
+                                            <a href="/admin/estates/Edit" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i> </a>
+                                            <a href="/admin/estates/Delete" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> </a>
                                         </div>
                                     </td>
                                 </tr>

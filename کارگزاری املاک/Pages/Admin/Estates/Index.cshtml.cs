@@ -20,10 +20,9 @@ namespace کارگزاری_املاک.Pages.Admin.Estates
         }
 
         public IList<EstateModel> EstateModel { get;set; }
-
         public async Task OnGetAsync()
         {
-            EstateModel = await _context.estates.ToListAsync();
+            EstateModel = await _context.estates.Include(c=>c.CategoryModel).ToListAsync();
         }
     }
 }

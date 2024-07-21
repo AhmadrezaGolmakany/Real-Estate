@@ -13,5 +13,7 @@ namespace کارگزاری_املاک.Data
 
         public DbSet<UserModel> users { get; set; }
         public DbSet<EstateModel> estates { get; set; }
+
+        public DbSet<CategoryModel> categories { get; set; }
     }
 }
