@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
+using کارگزاری_املاک.Models.ViewModels;
 
 namespace کارگزاری_املاک.Pages.Admin.Estates
 {
@@ -21,21 +22,32 @@ namespace کارگزاری_املاک.Pages.Admin.Estates
         }
 
         [BindProperty]
-        public EstateModel EstateModel { get; set; }
+        public EstatesViewModel EstateModel { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        private void InitCategories()
         {
-            if (id == null)
+            EstateModel = new()
+            {
+                CategoryOptions = new SelectList(_context.categories, nameof(CategoryModel.Id), nameof(CategoryModel.Title))
+            };
+        }
+
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            if (id <= 0)
             {
                 return NotFound();
             }
 
-            EstateModel = await _context.estates.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (EstateModel == null)
+            var estate = await _context.estates.FindAsync(id);
+            if (estate is null)
             {
                 return NotFound();
             }
+            InitCategories();
+
+            EstateModel.Estate = estate;
+
             return Page();
         }
 
@@ -43,35 +55,58 @@ namespace کارگزاری_املاک.Pages.Admin.Estates
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            #region Validation
+            if (!ModelState.IsValid || string.IsNullOrEmpty(EstateModel.SelectedCategory))
             {
+                InitCategories();
                 return Page();
             }
-
-            _context.Attach(EstateModel).State = EntityState.Modified;
-
-            try
+            bool check = int.TryParse(EstateModel.SelectedCategory, out int categoryId);
+            if (check is false)
             {
-                await _context.SaveChangesAsync();
+                ModelState.AddModelError(string.Empty, "دسته بندی انتخاب شده نامعتبر است");
+                InitCategories();
+                return Page();
             }
-            catch (DbUpdateConcurrencyException)
+            var category = await _context.categories.FindAsync(categoryId);
+            if (category is null)
             {
-                if (!EstateModelExists(EstateModel.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, "دسته بندی انتخاب شده نامعتبر است");
+                InitCategories();
+                return Page();
             }
+            #endregion
+            #region Upload Image
+            if (EstateModel.ImgUp is not null)
+            {
+                string saveDir = "wwwroot/image/Estates";
 
-            return RedirectToPage("./Index");
+                if (EstateModel.Estate.Image is not null)
+                {
+                    string deletePath = Path.Combine(Directory.GetCurrentDirectory(), saveDir, EstateModel.Estate.Image);
+                    if (System.IO.File.Exists(deletePath))
+                        System.IO.File.Delete(deletePath);
+                }
+
+                if (!Directory.Exists(saveDir))
+                    Directory.CreateDirectory(saveDir);
+
+                EstateModel.Estate.Image = Guid.NewGuid().ToString() + Path.GetExtension(EstateModel.ImgUp.FileName);
+                string savepath = Path.Combine(Directory.GetCurrentDirectory(), saveDir, EstateModel.Estate.Image);
+                using var filestream = new FileStream(savepath, FileMode.Create);
+                EstateModel.ImgUp.CopyTo(filestream);
+            }
+            #endregion
+            EstateModel.Estate.categoryId = categoryId;
+             _context.estates.Update(EstateModel.Estate);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("/Admin/Estates/Index");
+            return Page();
         }
 
         private bool EstateModelExists(int id)
         {
-            return _context.estates.Any(e => e.Id == id);
+            return false;
         }
     }
 }

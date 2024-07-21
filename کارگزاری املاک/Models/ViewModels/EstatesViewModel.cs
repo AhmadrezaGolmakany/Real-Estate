@@ -2,7 +2,7 @@
 
 namespace کارگزاری_املاک.Models.ViewModels
 {
-    public class Create_EstatesViewModel
+    public class EstatesViewModel
     {
         public EstateModel? Estate{ get; set; }
 

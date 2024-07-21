@@ -45,11 +45,11 @@
                                     <td class="text-center align-middle">@estate.Title</td>
                                     <td class="text-center align-middle">@estate.Metrage</td>
                                    <td class="text-center align-middle">@estate.CategoryModel.Title</td>
-                                 <td class="text-center">
+                                    <td class="text-center">
                                         <div class="btn-group" dir="ltr" role="group" aria-label="Basic example">
-                                            <a href="/admin/estates/Details" class="btn btn-sm btn-info">  <i class="fas fa-list"></i> </a>
-                                            <a href="/admin/estates/Edit" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i> </a>
-                                            <a href="/admin/estates/Delete" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> </a>
+                                            <a asp-page="Details" asp-route-Id="@estate.Id" class="btn btn-sm btn-info"><i class="fas fa-list"></i></a>
+                                            <a asp-page="Edit" asp-route-Id="@estate.Id" class="btn btn-sm btn-warning"> <i class="fas fa-edit"></i> </a>
+                                            <a asp-page="Delete" asp-route-Id="@estate.Id" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

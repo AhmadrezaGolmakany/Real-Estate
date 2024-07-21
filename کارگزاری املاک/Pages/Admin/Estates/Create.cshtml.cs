@@ -10,7 +10,7 @@ namespace کارگزاری_املاک.Pages.Admin.Estates
     public class CreateModel(ApplicationDbContext db) : PageModel
     {
         [BindProperty]
-        public Create_EstatesViewModel? ViewModel { get; set; }
+        public EstatesViewModel? ViewModel { get; set; }
         public void OnGet()
         {
             InitCategories();

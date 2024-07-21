@@ -5,54 +5,45 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="row mt-5">
+    <div class="col-lg-3 col-md-3 col-12">
+        <div class="text-right">
+            <div class="list-group p-0 mb-5">
+                <a href="#" class="active list-group-item list-group-item-action">
+                    مدیریت املاک
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-center font-weight-bold m-auto"> حذف ملک </h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <label class="h6 my-2"> نام </label>
+                            <input asp-for="EstateModel.Estate.Title" type="text" class="form-control" disabled="">
+                            <label class="h6 my-2"> متراژ </label>
+                            <input asp-for="EstateModel.Estate.Metrage" type="text" class="form-control" disabled="">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <img src="~/image/Estates/@Model.EstateModel.Estate.Image" width="200px" height="200px" class="my-2 mx-auto d-block">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <button class="btn btn-danger btn-block mr-1 my-3" type="submit"> حذف </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <a href="#" class="btn btn-secondary btn-block my-3"> بازگشت </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>EstateModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Metrage)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Metrage)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Image)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Image)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Address)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="EstateModel.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
+        </div>
+    </div>
 </div>

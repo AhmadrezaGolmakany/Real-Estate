@@ -5,51 +5,77 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="row mt-5">
+    <div class="col-lg-3 col-md-3 col-12">
+        <div class="text-right">
+            <div class="list-group p-0 mb-5">
+                <a href="#" class="active list-group-item list-group-item-action">
+                    جزئیات ملک
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-center font-weight-bold m-auto"> مدیریت املاک </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <label class="my-2 h6"> نام </label>
+                        <input asp-for="EstateModel.Title" type="text" class="form-control" disabled="">
+                        <label class="my-2 h6"> متراژ </label>
+                        <input asp-for="EstateModel.Metrage" type="text" class="form-control" disabled="">
+                        <label class="my-2 h6"> آدرس </label>
+                        <input asp-for="EstateModel.Address" type="text" class="form-control" disabled="">
+                        <label class="my-2 h6"> توضیحات </label>
+                        <textarea asp-for="EstateModel.Description" class="form-control" disabled=""></textarea>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <label class="my-2 h6"> نوع </label>
+                        <input asp-for="EstateModel.CategoryModel.Title" type="text" class="form-control" disabled="">
+                        <label class="my-2 h6"> مبلغ </label>
+                        <input asp-for="EstateModel.Price" type="text" class="form-control" disabled="">
+                        <label  class="my-2 h6 d-block"> عکس </label>
+                        <img src="~/image/Estates/@Model.EstateModel.Image" class="d-block m-auto img-fluid" width="250" height="250">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <a asp-page="Edit" asp-route-Id="@Model.EstateModel.Id" class="btn btn-warning btn-block"> ویرایش </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <a href="index.html" class="btn btn-secondary btn-block"> بازگشت </a>
+                    </div>
+                </div>
+            </div>
 
-<div>
-    <h4>EstateModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Metrage)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Metrage)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Image)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Image)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EstateModel.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EstateModel.Address)
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.EstateModel.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgPreview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}
