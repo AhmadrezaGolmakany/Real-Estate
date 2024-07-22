@@ -1,0 +1,74 @@
+﻿@page
+@model کارگزاری_املاک.Pages.Admin.Categoreis.IndexModel
+@{
+}
+<div class="row mt-5">
+    <div class="col-lg-3 col-md-3 col-12">
+        <div class="text-right">
+            <div class="list-group p-0 mb-5">
+                <a href="#" class="active list-group-item list-group-item-action">
+                    مدیریت املاک
+                </a>
+                <div class="list-group p-0 mb-5">
+                    <a href="/Panel/Admin/Categories" class=" list-group-item list-group-item-action">
+                        مدیریت دسته بندی ها
+                    </a>
+                    <a href="/Panel/Favourites" class=" list-group-item list-group-item-action">
+                        مدیریت علاقه مندی ها
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-12">
+        <div class="card pb-4 text-center">
+            <div class="card-header d-flex">
+                <a asp-page="Create" class="btn btn-info text-white"> ایجاد دسته بندی </a>
+                <h4 class="h4 text-center m-auto"> مدیریت دسته بندی ها </h4>
+            </div>
+            <div class="card-body">
+                <div class="card mb-3 shadow">
+                    <div class="card-body">
+                        @if (Model.Category.Any())
+                        {
+                            <table class="table table-light table-hover table-responsive-sm table-striped table-bordered mt-3">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center">نام دسته بندی</th>
+                                        <th class="text-center"> مدیریت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var category in Model.Category)
+                                    {
+                                        <tr>
+                                            <td class="text-center"> @category.Title</td>
+                                            <td class="text-center">
+                                                <div class="btn-group" dir="ltr" role="group" aria-label="Basic example">
+                                                    <a asp-page="Detail" asp-route-Id="@category.Id" class="btn btn-sm btn-info"> <i class="fas fa-list"></i> </a>
+                                                    <a asp-page="Edit" asp-route-Id="@category.Id" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a asp-page="Delete" asp-route-Id="@category.Id" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    
+
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <h3 class="text-center text-danger">دسته بندی موجود نمیباشد</h3>
+                        }
+
+                        <!--                            <h1 class="h4 text-center alert alert-info">دسته بندی ای موجود نمی باشد</h1>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

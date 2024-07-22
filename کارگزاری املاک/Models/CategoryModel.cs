@@ -20,7 +20,7 @@ namespace کارگزاری_املاک.Models
         #region relation
 
 
-        public List<EstateModel> EstatesList { get; set; }
+        public ICollection<EstateModel>? EstatesList { get; set; }
 
         #endregion
     }
