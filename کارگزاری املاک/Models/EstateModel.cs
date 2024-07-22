@@ -34,7 +34,7 @@ namespace کارگزاری_املاک.Models
 
 
         
-        public int categoryId { get; set; }
+        public int? categoryId { get; set; }
 
 
         #region relation

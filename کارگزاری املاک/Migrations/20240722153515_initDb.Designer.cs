@@ -9,11 +9,11 @@ using کارگزاری_املاک.Data;
 
 #nullable disable
 
-namespace کارگزاری_املاک.Data.Migrations
+namespace کارگزاری_املاک.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240720212120_258")]
-    partial class _258
+    [Migration("20240722153515_initDb")]
+    partial class initDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -277,7 +277,6 @@ namespace کارگزاری_املاک.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Metrage")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
