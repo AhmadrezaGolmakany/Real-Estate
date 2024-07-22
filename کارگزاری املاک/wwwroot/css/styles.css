@@ -5,11 +5,13 @@
     margin: 0;
     padding: 0;
     direction: rtl;
-    text-decoration: none;
+    text-decoration: none !important;
     text-align: right;
 }
 
-
+a {
+    color: black;
+}
 header {
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
     padding: 30px 60px;

@@ -6,6 +6,8 @@
 }
 
 <div class="row mt-5">
+    <partial name="Shared/_Panel" />
+
     <div class="col-lg-9 col-md-9 col-12">
         <div class="card">
             <div class="card-header">
@@ -13,8 +15,8 @@
             </div>
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data">
-                    <input type="hidden" asp-for="EstateModel.Estate.Image" />
-                    <input type="hidden" asp-for="EstateModel.Estate.Id" />
+                    <input type="hidden" asp-for="EstateModel.Estate.Image"/>
+                    <input type="hidden" asp-for="EstateModel.Estate.Id"/>
                     <div asp-validation-summary="ModelOnly"></div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
