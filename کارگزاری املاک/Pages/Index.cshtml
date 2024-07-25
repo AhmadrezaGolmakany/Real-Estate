@@ -23,13 +23,15 @@
         @foreach (var estates in Model.Model)
         {
             <div class="col-lg-3 col-md-6 col-12">
+                <a asp-page="EstatesDetails" asp-route-Id="@estates.Id">
+                    
                 <div class="product-card">
                     <div class="image">
                         <img src="~/image/Estates/@estates.Image" alt="product1">
                     </div>
                     <div class="card-body">
                         <p class="d-flex justify-content-between">
-                            <span> @estates.Title </span>
+                            <span > @estates.Title </span>
                             <span> @estates.Metrage متری </span>
                         </p>
                         <p class="mt-2 address">
@@ -41,6 +43,9 @@
 
 
                 </div>
+                    
+
+                </a>
             </div>
         }
 
