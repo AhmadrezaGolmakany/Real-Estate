@@ -15,5 +15,7 @@ namespace کارگزاری_املاک.Data
         public DbSet<EstateModel> estates { get; set; }
 
         public DbSet<CategoryModel> categories { get; set; }
+
+        public DbSet<FavoriteModel> favorites { get; set; }
     }
 }
