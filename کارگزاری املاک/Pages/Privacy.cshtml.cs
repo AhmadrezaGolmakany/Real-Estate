@@ -5,7 +5,7 @@ using کارگزاری_املاک.Utilitys;
 
 namespace کارگزاری_املاک.Pages
 {
-    [Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = Utilitys.Roles.Admin)]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;

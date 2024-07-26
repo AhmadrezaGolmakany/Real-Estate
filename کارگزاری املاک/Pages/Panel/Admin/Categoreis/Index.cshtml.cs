@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 
-namespace کارگزاری_املاک.Pages.Admin.Categoreis
+namespace کارگزاری_املاک.Pages.Panel.Admin.Categoreis
 {
     public class IndexModel : PageModel
     {

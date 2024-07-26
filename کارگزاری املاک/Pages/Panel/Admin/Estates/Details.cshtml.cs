@@ -10,7 +10,7 @@ using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 using کارگزاری_املاک.Models.ViewModels;
 
-namespace کارگزاری_املاک.Pages.Admin.Estates
+namespace کارگزاری_املاک.Pages.Panel.Admin.Estates
 {
     public class DetailsModel : PageModel
     {

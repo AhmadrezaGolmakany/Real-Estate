@@ -6,7 +6,7 @@ using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 using کارگزاری_املاک.Models.ViewModels;
 
-namespace کارگزاری_املاک.Pages.Admin.Categoreis
+namespace کارگزاری_املاک.Pages.Panel.Admin.Categoreis
 {
     public class EditModel : PageModel
     {

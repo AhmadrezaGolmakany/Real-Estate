@@ -1,9 +1,8 @@
 ﻿@page
-@model کارگزاری_املاک.Pages.Admin.Categoreis.EditModel
+@model کارگزاری_املاک.Pages.Panel.Admin.Categoreis.CreateModel
 @{
 }
 <div class="row mt-5">
-
     <div class="col-lg-3 col-md-3 col-12">
         <div class="text-right">
             <div class="list-group p-0 mb-5">
@@ -23,22 +22,22 @@
     </div>
     <div class="col-lg-9 col-12">
         <div class="card pb-4 text-center p-2">
-            <div class="card-header">
-                <h4 class="h4 text-center"> ویرایش دسته بندی "@Model.ViewModel.Title"</h4>
-            </div>
             <form method="post">
-                <input type="hidden" asp-for="ViewModel.Id" />
-                <input type="hidden">
+                <div asp-validation-summary="All" ></div>
+                <div class="card-header">
+                    <h4 class="h4 text-center"> ایجاد دسته بندی </h4>
+                </div>
                 <div class="row p-3">
                     <h6 class="text-right my-3"> نام دسته بندی </h6>
-                    <input asp-for="@Model.ViewModel.Title" class="form-control mt-2">
+                    <input asp-for="Model.Title" placeholder="نام دسته بندی را وارد کنید . . . " class="form-control mt-2">
                     <h6 class="text-right my-3"> توضیحات </h6>
-                    <textarea asp-for=" @Model.ViewModel.Description" id="discription" cols="15" rows="5" class="form-control"></textarea>
+                    <textarea asp-for="Model.Description" id="discription" cols="15" rows="5" placeholder="توضیحات دسته بندی را وارد کنید" class="form-control"></textarea>
+
 
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
-                        <button type="submit" class="btn btn-success btn-block text-white mx-2">ویرایش اطلاعات</button>
+                        <button type="submit" class="btn btn-success btn-block text-white mx-2">تایید</button>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <a class="btn btn-secondary btn-block">بازگشت</a>
@@ -48,3 +47,10 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

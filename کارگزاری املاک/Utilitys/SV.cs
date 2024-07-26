@@ -6,4 +6,9 @@
 
         public const string User = "user";
     }
+
+    public static class AuthorizationPolicies
+    {
+        public const string AdminPolicy = "adminpolicy";
+    }
 }

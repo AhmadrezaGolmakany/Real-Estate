@@ -5,7 +5,7 @@ using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 using کارگزاری_املاک.Models.ViewModels;
 
-namespace کارگزاری_املاک.Pages.Admin.Estates
+namespace کارگزاری_املاک.Pages.Panel.Admin.Estates
 {
     public class CreateModel(ApplicationDbContext db) : PageModel
     {
@@ -62,7 +62,7 @@ namespace کارگزاری_املاک.Pages.Admin.Estates
             ViewModel.Estate.categoryId = categoryId;
             await db.estates.AddAsync(ViewModel.Estate);
             await db.SaveChangesAsync();
-            return RedirectToPage("/Admin/Estates/Index");
+            return RedirectToPage("/Panel/Admin/Estates/Index");
         }
     }
 

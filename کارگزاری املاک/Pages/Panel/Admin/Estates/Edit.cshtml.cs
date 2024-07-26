@@ -10,7 +10,7 @@ using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 using کارگزاری_املاک.Models.ViewModels;
 
-namespace کارگزاری_املاک.Pages.Admin.Estates
+namespace کارگزاری_املاک.Pages.Panel.Admin.Estates
 {
     public class EditModel : PageModel
     {
@@ -100,7 +100,7 @@ namespace کارگزاری_املاک.Pages.Admin.Estates
             EstateModel.Estate.categoryId = categoryId;
              _context.estates.Update(EstateModel.Estate);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/Admin/Estates/Index");
+            return RedirectToPage("/Panel/Admin/Estates/Index");
             return Page();
         }
 

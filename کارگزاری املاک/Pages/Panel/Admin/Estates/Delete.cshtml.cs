@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
+using کارگزاری_املاک.Models.ViewModels;
 
-namespace کارگزاری_املاک.Pages.Admin.Categoreis
+namespace کارگزاری_املاک.Pages.Panel.Admin.Estates
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +22,16 @@ namespace کارگزاری_املاک.Pages.Admin.Categoreis
         }
 
         [BindProperty]
-        public CategoryModel CategoryModel { get; set; }
+        public EstatesViewModel EstateModel { get; set; }
+
+
+        private void InitCategories()
+        {
+            EstateModel = new()
+            {
+                CategoryOptions = new SelectList(_context.categories, nameof(CategoryModel.Id), nameof(CategoryModel.Title))
+            };
+        }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,12 +40,15 @@ namespace کارگزاری_املاک.Pages.Admin.Categoreis
                 return NotFound();
             }
 
-            CategoryModel = await _context.categories.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (CategoryModel == null)
+            var estate = await _context.estates.FindAsync(id);
+            if (estate is null)
             {
                 return NotFound();
             }
+            InitCategories();
+
+            EstateModel.Estate = estate;
+
             return Page();
         }
 
@@ -45,15 +59,15 @@ namespace کارگزاری_املاک.Pages.Admin.Categoreis
                 return NotFound();
             }
 
-            CategoryModel = await _context.categories.FindAsync(id);
+            var estate  = await _context.estates.FindAsync(id);
 
-            if (CategoryModel != null)
+            if (estate is not null)
             {
-                _context.categories.Remove(CategoryModel);
+                _context.estates.Remove(estate);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
-        }
+       }
     }
 }

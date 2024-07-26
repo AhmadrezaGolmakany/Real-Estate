@@ -1,7 +1,10 @@
 ﻿@page
-@model کارگزاری_املاک.Pages.Admin.Categoreis.CreateModel
+@model کارگزاری_املاک.Pages.Panel.Admin.Categoreis.DeleteModel
+
 @{
+    ViewData["Title"] = "Delete";
 }
+
 <div class="row mt-5">
     <div class="col-lg-3 col-md-3 col-12">
         <div class="text-right">
@@ -22,35 +25,27 @@
     </div>
     <div class="col-lg-9 col-12">
         <div class="card pb-4 text-center p-2">
+            <div class="card-header">
+                <h4 class="h4 text-center">حذف دسته بندی اول</h4>
+            </div>
             <form method="post">
-                <div asp-validation-summary="All" ></div>
-                <div class="card-header">
-                    <h4 class="h4 text-center"> ایجاد دسته بندی </h4>
-                </div>
+                <input type="hidden">
                 <div class="row p-3">
                     <h6 class="text-right my-3"> نام دسته بندی </h6>
-                    <input asp-for="Model.Title" placeholder="نام دسته بندی را وارد کنید . . . " class="form-control mt-2">
+                    <input asp-for="CategoryModel.Title" class="form-control mt-2" disabled="">
+
                     <h6 class="text-right my-3"> توضیحات </h6>
-                    <textarea asp-for="Model.Description" id="discription" cols="15" rows="5" placeholder="توضیحات دسته بندی را وارد کنید" class="form-control"></textarea>
-
-
+                    <textarea asp-for="CategoryModel.Description" id="discription" cols="15" rows="5" disabled="" class="form-control"></textarea>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
-                        <button type="submit" class="btn btn-success btn-block text-white mx-2">تایید</button>
+                        <input type="submit" class="btn btn-danger btn-block d-block text-white mx-2" value="حذف">
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
-                        <a class="btn btn-secondary btn-block">بازگشت</a>
+                        <a class="btn btn-secondary btn-block d-block text-white mx-2">بازگشت</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

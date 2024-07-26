@@ -4,7 +4,7 @@ using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 using کارگزاری_املاک.Models.ViewModels;
 
-namespace کارگزاری_املاک.Pages.Admin.Categoreis
+namespace کارگزاری_املاک.Pages.Panel.Admin.Categoreis
 {
     public class CreateModel : PageModel
     {
@@ -32,7 +32,7 @@ namespace کارگزاری_املاک.Pages.Admin.Categoreis
 
             await _context.categories.AddAsync(Model);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/admin/Categoreis/index");
+            return RedirectToPage("/panel/admin/Categoreis/index");
         }
     }
 }

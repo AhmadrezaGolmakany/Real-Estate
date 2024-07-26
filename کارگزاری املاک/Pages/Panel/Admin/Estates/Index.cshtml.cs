@@ -8,8 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 
-namespace کارگزاری_املاک.Pages.Admin.Estates
+namespace کارگزاری_املاک.Pages.Panel.Admin.Estates
 {
+
+
     public class IndexModel : PageModel
     {
         private readonly کارگزاری_املاک.Data.ApplicationDbContext _context;

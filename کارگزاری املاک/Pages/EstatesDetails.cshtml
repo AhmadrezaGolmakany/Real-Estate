@@ -12,7 +12,7 @@
 
             <h6 class="mt-3"> متراژ :  </h6> <p> @Model.EstatesVM.Estate.Metrage متر </p>
 
-            <h6 class="mt-3"> دسته بندی :  </h6> <p> @Model.EstatesVM.Estate.CategoryModel.Title </p>
+            <h6 class="mt-3"> دسته بندی :  </h6> <p> @Model?.EstatesVM?.Estate?.CategoryModel?.Title </p>
 
             <h6 class="mt-3"> قیمت :  </h6> <p> @Model.EstatesVM.Estate.Price.ToString("#,0") </p>
 

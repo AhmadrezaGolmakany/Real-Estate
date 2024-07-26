@@ -39,7 +39,7 @@ namespace کارگزاری_املاک.Pages
             {
                 Estate = Estates,
                 suggestedproducts = _context.estates.Include(c => c.CategoryModel)
-                    .Where(e => e.CategoryModel.Title == Estates.CategoryModel.Title && e.Id != Estates.Id)
+                    .Where(e =>  e.Id != Estates.Id)
                     .Take(4)
                     .ToList()
             };

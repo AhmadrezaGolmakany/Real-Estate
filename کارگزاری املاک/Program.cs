@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
+using کارگزاری_املاک.Utilitys;
 
 namespace کارگزاری_املاک
 {
@@ -21,7 +22,20 @@ namespace کارگزاری_املاک
             builder.Services.AddDefaultIdentity<UserModel>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddRazorPages();
+
+
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy(AuthorizationPolicies.AdminPolicy, p => p.RequireRole(Roles.Admin));
+            });
+
+
+
+            builder.Services.AddRazorPages(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Panel/Admin", AuthorizationPolicies.AdminPolicy);
+            });
 
             var app = builder.Build();
 
@@ -42,6 +56,7 @@ namespace کارگزاری_املاک
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapRazorPages();
