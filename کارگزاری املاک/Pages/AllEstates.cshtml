@@ -1,28 +1,13 @@
 ﻿@page
-@model IndexModel
+@model کارگزاری_املاک.Pages.AllEstatesModel
 @{
-    ViewData["Title"] = "Home page";
 }
-<h4 class="text-title">
-    به سایت <span class="span1">مشاورین املاک </span>  خوش
-    آمدید !
-</h4>
-
-<!--    banner-->
-<div class="banner">
-    <img src="~/image/15.jpg" alt="">
-</div>
-<!--    end banner-->
-<!--    title-->
-<div class="title">
-    <h2> تازه ترین املاک  </h2>
-</div>
 <div class="products row">
     @if (Model.Model.Any())
     {
         @foreach (var estates in Model.Model)
         {
-            <div class="col-lg-4 col-md-6 col-12"> 
+            <div class="col-lg-4 col-md-6 col-12">
                 <a asp-page="EstatesDetails" asp-route-Id="@estates.Id">
                     
                     <div class="product-card">
@@ -47,12 +32,7 @@
 
                 </a>
             </div>
-           
         }
-        <h5 class="text-center mt-3 ">
-            <a class="text-center" href="AllEstates" > مشاهده همه املاک</a>
-
-        </h5>
 
     }
     else
@@ -64,15 +44,3 @@
    
 
 </div>
-<footer>
-    <!--    about us-->
-    <div class="contactUs">
-        <h4> ارتباط با ما : 09152237727 </h4>
-    </div>
-    <!--    end about us-->
-    <!--    logo-->
-    <!--   End logo-->
-    <!--    symbol-->
-    
-    <!--    end symbol-->
-</footer>

@@ -1,16 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using کارگزاری_املاک.Data;
 using کارگزاری_املاک.Models;
 
 namespace کارگزاری_املاک.Pages
 {
-    public class IndexModel : PageModel
+    public class AllEstatesModel : PageModel
     {
+
         private readonly ApplicationDbContext _context;
 
-        public IndexModel(ApplicationDbContext context)
+        public AllEstatesModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -20,9 +20,9 @@ namespace کارگزاری_املاک.Pages
 
         public void OnGet()
         {
-            Model = _context.estates
-                .Take(3)
-                .ToList();
+            Model = _context.estates.ToList();
+            
+
         }
     }
 }
